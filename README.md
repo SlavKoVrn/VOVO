@@ -1,3 +1,37 @@
+## Реализовать поиск по товарам с фильтрами
+
+## Реализовать HTTP-endpoint (например, GET /api/products), который возвращает список товаров с возможностью фильтрации и сортировки.
+
+#### У товара должны быть поля:
+
+```php
+* id
+* name (string, индекс по LIKE или FULLTEXT если захочешь)
+* price (decimal)
+* category_id (foreign key на таблицу categories)
+* in_stock (boolean)
+* rating (float, 0–5)
+* created_at
+* updated_at
+```
+
+#### Фильтры (через query-параметры):
+
+```php
+* q — поиск по подстроке в name
+* price_from, price_to
+* category_id
+* in_stock (true/false)
+* rating_from
+```
+
+#### Сортировка:
+
+параметр sort с допустимыми значениями: price_asc, price_desc, rating_desc, newest.
+
+#### Обязательна пагинация.
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">

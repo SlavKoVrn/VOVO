@@ -18,7 +18,7 @@ class Product extends Model
         'in_stock' => 'boolean',
     ];
 
-    public function category(): BelongsTo
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }

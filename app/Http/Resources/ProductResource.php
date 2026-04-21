@@ -18,11 +18,11 @@ class ProductResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'price' => (float) $this->price,
-            'category' => $this->whenLoaded('category', fn() => [
+            'category' => $this->category ? [
                 'id' => $this->category->id,
                 'name' => $this->category->name,
                 'slug' => $this->category->slug,
-            ]),
+            ] : null,
             'category_id' => $this->category_id,
             'in_stock' => (bool) $this->in_stock,
             'rating' => (float) $this->rating,

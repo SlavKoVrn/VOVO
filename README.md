@@ -41,7 +41,7 @@ cd api
 composer install
 ```
 
-#### 2.Доступ к базе данных MySQL
+#### 2.Доступ к базе данных MySQL и генерация тестовых данных
 
 ```php
 .env
@@ -54,8 +54,13 @@ DB_PASSWORD=password
 php artisan migrate
 php artisan db:seed --seed=ProductDataSeeder
 ```
+#### 3.Запуск dev-сервера
 
-#### 3.Тестирование 
+```php
+php artisan serve
+```
+
+#### 4.Тестирование 
 
 ```php
 php artisan test --filter=ProductApiTest

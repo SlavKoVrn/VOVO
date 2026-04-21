@@ -52,7 +52,7 @@ DB_USERNAME=root
 DB_PASSWORD=password
 
 php artisan migrate
-php artisan db:seed --seed=ProductDataSeeder
+php artisan db:seed --class=ProductDataSeeder
 ```
 #### 3.Запуск dev-сервера
 

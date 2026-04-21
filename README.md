@@ -31,7 +31,17 @@
 
 #### Обязательна пагинация.
 
-#### Прописать доступ к базе данных MySQL
+## Запуск проекта
+
+#### 1.Клонировать репозиторий
+
+```php
+git clone https://github.com/SlavKoVrn/VOVO api
+cd api
+composer install
+```
+
+#### 2.Доступ к базе данных MySQL
 
 ```php
 .env
@@ -40,9 +50,12 @@ DB_PORT=3306
 DB_DATABASE=api
 DB_USERNAME=root
 DB_PASSWORD=password
+
+php artisan migrate
+php artisan db:seed --seed=ProductDataSeeder
 ```
 
-#### Тестирование 
+#### 3.Тестирование 
 
 ```php
 php artisan test --filter=ProductApiTest

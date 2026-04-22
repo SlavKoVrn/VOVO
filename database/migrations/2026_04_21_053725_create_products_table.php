@@ -26,6 +26,7 @@ return new class extends Migration
             $table->index('in_stock');
             $table->index('rating');
             $table->index('created_at');
+            $table->fullText('name'); // MySQL 5.6+ / PostgreSQL
         });
     }
 

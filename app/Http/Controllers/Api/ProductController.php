@@ -34,7 +34,8 @@ class ProductController extends Controller
 
         $query = Product::query()
             ->with('category')
-            ->when($validated['q'] ?? null, fn($q, $search) => $q->where('name', 'like', "%{$search}%"))
+            ->when($validated['q'] ?? null, fn($q, $search) => $q->whereFullText('name', $search))
+            //->when($validated['q'] ?? null, fn($q, $search) => $q->where('name', 'like', "%{$search}%"))
             ->when($validated['price_from'] ?? null, fn($q, $val) => $q->where('price', '>=', $val))
             ->when($validated['price_to'] ?? null, fn($q, $val) => $q->where('price', '<=', $val))
             ->when($validated['category_id'] ?? null, fn($q, $val) => $q->where('category_id', $val))

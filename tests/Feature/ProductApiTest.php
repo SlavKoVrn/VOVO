@@ -11,6 +11,17 @@ class ProductApiTest extends TestCase
 {
     use RefreshDatabase;
 
+    // tests/Feature/DebugDatabaseTest.php
+    public function test_database_driver()
+    {
+        $driver = config('database.default');
+        $connection = config("database.connections.{$driver}.driver");
+        
+        dump("Default: {$driver}, Driver: {$connection}");
+        
+        $this->assertEquals('mysql', $connection);
+    }
+
     // ─────────────────────────────────────────────────────────────────────────
     // GET /api/products (Pagination)
     // ─────────────────────────────────────────────────────────────────────────
@@ -41,7 +52,13 @@ class ProductApiTest extends TestCase
         Product::factory()->create(['name' => 'Bluetooth Speaker']);
         Product::factory()->create(['name' => 'USB Cable']);
 
-        $response = $this->getJson('/api/products?q=phone');
+        $response = $this->getJson('/api/products?q=phone wireless');
+        /*
+        file_put_contents(
+            storage_path('logs/debug_response.json'),
+            json_encode($response->json(), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
+        );
+        */
         $items = $response->json('data.items');
         
         $response->assertStatus(200);

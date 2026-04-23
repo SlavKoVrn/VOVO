@@ -66,6 +66,59 @@ php artisan serve
 php artisan test --filter=ProductApiTest
 ```
 
+#### Команды установки проекта
+
+```php
+composer create-project laravel/laravel api --prefer-dist
+Создаём модели с миграциями и фабриками (-m = migration, -f = factory)
+php artisan make:model Category -mf
+php artisan make:model Product -mf
+Создаём сидер для генерации данных
+php artisan make:seeder ProductDataSeeder
+Примените миграции
+php artisan migrate
+Запустите сидер
+php artisan db:seed --class=ProductDataSeeder
+Или всё сразу (сброс БД + миграции + сидеры)
+php artisan migrate:fresh --seed --class=ProductDataSeeder
+Создаём API Resource для форматирования ответа
+php artisan make:resource ProductResource
+php artisan make:collection ProductCollection
+Создаём API Controller с методами CRUD (--api флаг)
+php artisan make:controller Api/ProductController --api
+php artisan make:test ProductApiTest
+
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   └── Api/
+│   │   │       └── ProductController.php
+│   │   │   
+│   │   └── Resources/
+│   │       ├── ProductCollection.php
+│   │       └── ProductResource.php
+│   ├── Models/
+│   │   ├── Category.php
+│   │   └── Product.php
+│   └── Providers/
+│       └── AppServiceProvider.php
+├── database/
+│   ├── factories/
+│   │   ├── CategoryFactory.php
+│   │   └── ProductFactory.php
+│   ├── migrations/
+│   │   ├── 2026_04_21_053657_create_categories_table.php
+│   │   └── 2026_04_21_053725_create_products_table.php
+│   └── seeders/
+│       └── ProductDataSeeder.php
+├── routes/
+│   ├── api.php
+│   └── web.php
+└── tests/
+    └── Feature/
+        └── ProductApiTest.php
+```
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">

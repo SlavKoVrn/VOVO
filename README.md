@@ -100,8 +100,6 @@ php artisan make:test ProductApiTest
 │   ├── Models/
 │   │   ├── Category.php
 │   │   └── Product.php
-│   └── Providers/
-│       └── AppServiceProvider.php
 ├── database/
 │   ├── factories/
 │   │   ├── CategoryFactory.php
@@ -112,8 +110,7 @@ php artisan make:test ProductApiTest
 │   └── seeders/
 │       └── ProductDataSeeder.php
 ├── routes/
-│   ├── api.php
-│   └── web.php
+│   └── api.php
 └── tests/
     └── Feature/
         └── ProductApiTest.php

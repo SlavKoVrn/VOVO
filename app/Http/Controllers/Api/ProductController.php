@@ -60,7 +60,11 @@ class ProductController extends Controller
 
         $perPage = $validated['per_page'] ?? 20;
         $products = $query->paginate($perPage);
-
+        /*
+        $h=fopen(dirname(__FILE__).'/sql.txt','w');
+        fwrite($h,print_r($query->toSQL(),true));
+        fclose($h);
+        */
         return new ProductCollection($products);
     }
 
